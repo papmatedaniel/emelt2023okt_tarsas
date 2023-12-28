@@ -77,7 +77,7 @@ for index, elem in enumerate(osveny):
     if len(dobas) > 0:
   
         if index == szamlalo-1:
-            print(elem, szamlalo)
+            print(elem, szamlalo, dobas[0])
             del dobas[0]
             szamlalo += dobas[0]
         else:
@@ -85,3 +85,5 @@ for index, elem in enumerate(osveny):
         
     else:
         break
+
+print(sum(dobas))
