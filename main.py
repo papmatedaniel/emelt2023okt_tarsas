@@ -40,7 +40,7 @@ statisztika = {i:osvenyeklist[osv-1].count(i) for i in osvenyeklist[osv-1]}
 
 """
 
-osveny = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+"""osveny = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
 dobas = [2, 4, 6, 5, 6, 1, 4, 1, 3, 4, 5, 1, 2, 4, 6, 2, 3, 3, 5, 5, 6, 2, 1, 3, 4, 4, 2, 6, 2 ,4, 5, 6, 3, 2, 1, 2, 3, 1, 1,6 ,4, 1 ,4 ,4 ,3 ,6 ,1 ,4 ,2 ,6, 2 ,4, 5 ,5 ,1, 4 ,5, 3 ,4 ,6 ,6, 5, 2, 2, 4,1, 1 ,5 ,5 ,5, 2]
 osvenyhossza = len(osveny)
 jatekosokszama = 3
@@ -65,3 +65,23 @@ while kilep:
         if adatok[i]["dobasosszeg"].append(dobas[adatok[i]["dobasosszeg"])]) > osvenyhossza:
               adatok[i]["dobasosszeg"].append(dobas.index(adatok[i]["dobasosszeg"]))
               kilep = False
+"""
+
+osveny = "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM"
+dobas = [2, 4, 6, 5, 6, 1, 4, 1, 3, 4, 5, 1, 2, 4, 6, 2, 3, 3, 5, 5, 6, 2, 1, 3, 4, 4, 2, 6, 2 ,4, 5, 6, 3, 2, 1, 2, 3, 1, 1,6 ,4, 1 ,4 ,4 ,3 ,6 ,1 ,4 ,2 ,6, 2 ,4, 5 ,5 ,1, 4 ,5, 3 ,4 ,6 ,6, 5, 2, 2, 4,1, 1 ,5 ,5 ,5, 2]
+osvenyhossza = len(osveny)
+jatekosokszama = 1
+
+szamlalo = dobas[0]
+for index, elem in enumerate(osveny):
+    if len(dobas) > 0:
+  
+        if index == szamlalo-1:
+            print(elem, szamlalo)
+            del dobas[0]
+            szamlalo += dobas[0]
+        else:
+            print(elem)
+        
+    else:
+        break
