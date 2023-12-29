@@ -7,7 +7,7 @@ with open("dobasok.txt", "r", encoding="utf-8") as file:
     dobasoklist = [int(i) for i in file.read().split()]
 
 print("2. feladat")
-print(f"A dobások száma: {len(dobasoklist) // 2}")
+print(f"A dobások száma: {len(dobasoklist)}")
 print(f"Az ösvények száma: {len(osvenyeklist)}")
 print()
 
@@ -116,3 +116,5 @@ del rendezett1[-2:]
 rendezett2 = sorted(rendezett1, key = lambda x: x[0])
 for i in rendezett2:
     print(f"{i[0]}. játékos, {i[1]}. mező")
+
+
