@@ -6,8 +6,6 @@ with open("osvenyek.txt", "r", encoding="utf-8") as file:
 with open("dobasok.txt", "r", encoding="utf-8") as file:
     dobasoklist = [int(i) for i in file.read().split()]
 
-
-
 print("2. feladat")
 print(f"A dobások száma: {len(dobasoklist) // 2}")
 print(f"Az ösvények száma: {len(osvenyeklist)}")
@@ -55,7 +53,10 @@ with open("kulonleges.txt", "w", encoding="utf-8") as file:
 
 print("7. feladat")
 osveny = len(osvenyeklist[osv]) * ["M"]
+dobas2 = []
+dobas2.extend(dobasoklist)
 dobas = dobasoklist
+
 körökszama = 0
 jateklista = [0] * jatekosokszama
 
@@ -69,4 +70,41 @@ for key, value in enumerate(jateklista):
     if value >= len(osveny):
         print(f"A játkos a(z) {körökszama+1}. körben fejeződött be. A legtávolagg jutó(k) sorszáma: {int(key)+1}")
         break
+
+
+
+
+osveny2 = osvenyeklist[osv]
+korokszama2 = 0
+jateklista2 = [0] * jatekosokszama
+hosszabb = True
+while all(len(osveny2) >= i for i in jateklista2) and hosszabb:
+    körökszama += 1
+
+    for i in range(jatekosokszama):
+        jateklista2[i] += dobas2[0]
+        try:
+            if osveny2[jateklista2[i]-1] == "E":
+                jateklista2[i] += dobas2[0]
+                
+                
+        except IndexError:
+            jateklista2[i] += dobas2[0]
+            hosszabb = False
+
+        try:
+            if osveny2[jateklista2[i]-1] == "V":
+                jateklista2[i] -= dobas2[0]
+                
+                
+        except IndexError:
+            jateklista2[i] -= dobas2[0]
+            hosszabb = False
+        del dobas2[0]
+        
+
+
+print("8. feladat")
+print("Nyertes(ek): ", end="")
+print(jateklista2)
 
