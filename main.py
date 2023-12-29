@@ -74,37 +74,45 @@ for key, value in enumerate(jateklista):
 
 
 
-osveny2 = osvenyeklist[osv]
+osveny2 = osvenyeklist[osv-1]
 korokszama2 = 0
+# ebben van az 5 jatekos dobasainak osszege
+# pl 0 elem az elso jatekos es dobott 120-at
 jateklista2 = [0] * jatekosokszama
 hosszabb = True
+körökszama = 0
 while all(len(osveny2) >= i for i in jateklista2) and hosszabb:
     körökszama += 1
 
+    # itt dob minden jatekos
     for i in range(jatekosokszama):
+        # dobas2 0 elem a kov. dobas
         jateklista2[i] += dobas2[0]
+
         try:
             if osveny2[jateklista2[i]-1] == "E":
                 jateklista2[i] += dobas2[0]
-                
-                
         except IndexError:
             jateklista2[i] += dobas2[0]
             hosszabb = False
 
         try:
             if osveny2[jateklista2[i]-1] == "V":
-                jateklista2[i] -= dobas2[0]
-                
-                
+                jateklista2[i] -= dobas2[0] 
         except IndexError:
             jateklista2[i] -= dobas2[0]
             hosszabb = False
-        del dobas2[0]
         
+        del dobas2[0]
 
 
-print("8. feladat")
-print("Nyertes(ek): ", end="")
-print(jateklista2)
 
+print("8. feladat \nNyertes(ek): ", end=" ")
+kegtdimenzioslist = [[i+1,e] for i,e in enumerate(jateklista2)]
+rendezett1 = sorted(kegtdimenzioslist, key = lambda x: x[1])
+nyomtatni = [sublist[0] for sublist in rendezett1[-2:]]
+print(*nyomtatni)
+del rendezett1[-2:]
+rendezett2 = sorted(rendezett1, key = lambda x: x[0])
+for i in rendezett2:
+    print(f"{i[0]}. játékos, {i[1]}. mező")
